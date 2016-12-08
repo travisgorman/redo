@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Head from './Head';
 import List from './List';
+import Create from './Create';
 
 const todos = [
   {
@@ -21,12 +22,11 @@ export default class App extends React.Component{
     this.state = {todos}
   }
   render() {
-    console.log( this.state )
     return (  
       <div>
         <h1>React ToDos App</h1>
-        <List  
-          todos={this.state.todos} />
+        <Create />
+        <List todos={this.state.todos} />
       </div>
     );
   }
