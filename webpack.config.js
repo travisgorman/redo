@@ -2,6 +2,27 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
+  switch(process.env.npm_lifecycle_event) {
+  case 'build':
+  case 'stats':
+    config = merge(
+      common,
+      {
+        devtool: 'source-map',
+        output: {
+          path: PATHS.build,
+          // Tweak this to match your GitHub project name
+          publicPath: '/redo/'
+          filename: '[name].[chunkhash].js',
+          chunkFilename: '[chunkhash].js'
+        }
+      },
+      ...
+    );
+    break;
+  default:
+    ...
+}
   devtool: 'inline-source-map',
   entry: [
     'webpack-dev-server/client?http://127.0.0.1:8080/',
