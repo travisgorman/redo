@@ -20,4 +20,10 @@ export default class List extends React.Component{
       </table>
     );
   }
+  handleCreate(e){
+    e.preventDefault()
+    this.props.createTask(this.refs.createInput.value);
+    this.refs.createInput.value = '';
+    console.log( this.refs.createInput.value )
+  }
 }
