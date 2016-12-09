@@ -4,11 +4,20 @@ export default class Item extends React.Component{
 
   constructor(props){
     super(props);
-
     this.state = {
       isEditing: false,
     }
   }
+renderTaskSection(){
+  const { task, isComplete } = this.props;
+  const taskStyle = {
+    color: isComplete ? 'green' : 'red',
+    cursor: 'pointer',
+  }
+  return (  
+    <td style={taskStyle}>{task}</td>
+  )
+}
 
 renderActionsSection() {
   if (this.state.isEditing) {
@@ -32,7 +41,7 @@ renderActionsSection() {
 render(){
   return (  
     <tr>
-        <td>{this.props.task}</td>
+        {this.renderTaskSection()}
         {this.renderActionsSection()}
     </tr>
   );
